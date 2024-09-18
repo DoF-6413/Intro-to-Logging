@@ -22,9 +22,27 @@ import edu.wpi.first.wpilibj2.command.Command;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  // Declare subsystems below...
+  
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  /** The container for the robot. Contains subsystems, IO devices, and commands. */
   public RobotContainer() {
+    switch (Constants.RobotStateConstants.getMode()) {
+      case REAL:
+        // Instansiate Motor using the "real" IO file
+
+        break;
+
+      case SIM:
+        // Instansiate Motor using the sim IO file
+
+        break;
+
+      case REPLAY:
+        // Instansiate Motor using the default IO file
+
+        break;
+    }
     configureButtonBindings();
   }
 
