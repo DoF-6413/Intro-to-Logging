@@ -54,4 +54,22 @@ public final class Constants {
     /** Average battery voltage */
     public static final int BATTERY_VOLTAGE = 12;
   }
+
+  /** */
+  public static class MotorConstants {
+    /** ID of the CAN SPARKMAX connected to the Motor */
+    public static final int CAN_ID = 1;
+
+    /**
+     * Sets the inversion status of the Motor to false. This means that any positive input will
+     * result the Motor moving in the CCW direction and any negative input will move it CW
+     */
+    public static final boolean NOT_INVERTED = false;
+
+    /** Gear ratio of 1:1 */
+    public static final double GEAR_RATIO = 1;
+
+    /** Moment of Intertia in Kg * m^2 */
+    public static final double MOI_KG_M2 = 0.0001;
+  }
 }
