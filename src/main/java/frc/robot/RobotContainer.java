@@ -23,7 +23,6 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // Declare subsystems below...
-  
 
   /** The container for the robot. Contains subsystems, IO devices, and commands. */
   public RobotContainer() {

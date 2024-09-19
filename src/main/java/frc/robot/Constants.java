@@ -54,4 +54,11 @@ public final class Constants {
     /** Average battery voltage */
     public static final int BATTERY_VOLTAGE = 12;
   }
+
+  public static class MotorConstants {
+    public static final int CAN_ID = 7;
+    public static final boolean SET_INVERTED = false;
+    public static final double GEAR_RATIO = 2.3;
+    public static final double MOMENT_OF_INERTIA = 4; // Kg x m^2
+  }
 }
