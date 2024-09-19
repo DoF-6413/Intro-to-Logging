@@ -5,10 +5,11 @@
 package frc.robot.subsystems.motor;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import org.littletonrobotics.junction.Logger;
 
 public class Motor extends SubsystemBase {
   // Declare any objects here...
-
+  private final MotorIO io {}
   /** Creates a new Motor. Instansiate all objects in this method */
   public Motor(MotorIO io) {}
 
