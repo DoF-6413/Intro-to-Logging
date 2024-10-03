@@ -12,7 +12,7 @@ public interface MotorIO {
     public double motorRPM = 0.0;
     public double motorAppliedVolts = 0.0;
     public double motorCurrentAmps = 0.0;
-    public double positionRadians = 0.0; 
+    public double positionRadians = 0.0;
     public double positionDegrees = 0.0;
   }
 
@@ -25,7 +25,6 @@ public interface MotorIO {
   // Note: All javadoc comments made to methods here will make them visable to all within other
   // files using them.
   public default void setVoltage(double volts) {}
-  public default void setSpeed(double percent) {} //0-1 is forward, -1 - 0 is backwards
 
-
+  public default void setSpeed(double percent) {} // 0-1 is forward, -1 - 0 is backwards
 }

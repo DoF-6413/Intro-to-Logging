@@ -55,11 +55,10 @@ public final class Constants {
     public static final int BATTERY_VOLTAGE = 12;
   }
 
-
-public static class motorConstants {
-  public static final int CanSparkMax_Id = 7;
-  public static final boolean motorInvertido = false;
-  public static final double gearRatio = 0.000001;
-  public static final double momentOfInertia = 3.47; //kg(m^2)
-}
+  public static class motorConstants {
+    public static final int CanSparkMax_Id = 7;
+    public static final boolean motorInvertido = false;
+    public static final double gearRatio = 0.000001;
+    public static final double momentOfInertia = 3.47; // kg(m^2)
+  }
 }

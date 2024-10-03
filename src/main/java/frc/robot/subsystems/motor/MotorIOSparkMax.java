@@ -1,12 +1,11 @@
 package frc.robot.subsystems.motor;
-import frc.robot.subsystems.motor.*;
-import frc.robot.Constants;
-import frc.robot.Constants.motorConstants;
+
+import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-import edu.wpi.first.units.Units;
-import com.revrobotics.CANSparkBase.IdleMode;
+import edu.wpi.first.math.util.Units;
+import frc.robot.Constants.motorConstants;
 
 public class MotorIOSparkMax implements MotorIO {
   // Declare any objects below necessary to run your Motor connected to a SPARKMAX speed
@@ -27,7 +26,21 @@ public class MotorIOSparkMax implements MotorIO {
   public void updateInputs(MotorIOInputs inputs) {
     // Use your objects created above to update the logged values created in your IO file
     // inputs.{logged value} = {object}.{getValue method};
+    inputs.motorAppliedVolts = motor.getAppliedOutput() * motor.getBusVoltage();
+    inputs.motorCurrentAmps = motor.getOutputCurrent();
+    inputs.motorRPM = encoder.getVelocity();
+    inputs.positionDegrees = Units.rotationsToDegrees(encoder.getPosition());
+    inputs.positionRadians = Units.rotationsToRadians(encoder.getPosition());
   }
 
   // Define any other mehods needed to for your Motor below...
+  @Override
+  public void setSpeed(double percent) {
+    motor.set(percent);
+  }
+
+  @Override
+  public void setVoltage(double volts) {
+    motor.setVoltage(volts);
+  }
 }
