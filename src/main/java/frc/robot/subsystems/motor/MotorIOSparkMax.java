@@ -6,6 +6,8 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.units.Unit;
+
 import com.revrobotics.CANSparkBase.IdleMode;
 public class MotorIOSparkMax implements MotorIO {
   
@@ -22,15 +24,27 @@ public class MotorIOSparkMax implements MotorIO {
     Motor.setIdleMode(CANSparkBase.IdleMode.kBrake);
     Motor.setInverted(MotorConstants.SET_INVERTED);
     
-    
   }
 
   @Override
   public void updateInputs(MotorIOInputs inputs) {
     // Use your objects created above to update the logged values created in your IO file
     // inputs.{logged value} = {object}.{getValue method};
+    inputs.MotorAppliedVolts = Motor.getAppliedOutput() * Motor.getBusVoltage();
+    inputs.MotorCurrentAmps = Motor.getOutputCurrent();
+    inputs.MotorRPM = Encoder.getVelocity();
+    inputs.PositionDegrees = Units.rotationsToDegrees(Encoder.getPosition());
+    inputs.PositionRadians = Units.rotationsToRadians(Encoder.getPosition());
+    
   }
 
   // Define any other methods needed to for your Motor below...
-
+  @Override
+public void SetVolts (double volts){
+  Motor.setVoltage(volts);
+}
+@Override
+public void SetSpeed (double percent){
+  Motor.set(percent);
+}
 }

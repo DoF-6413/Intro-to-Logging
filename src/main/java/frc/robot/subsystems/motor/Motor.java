@@ -10,15 +10,25 @@ import org.littletonrobotics.junction.Logger;
 public class Motor extends SubsystemBase {
   // Declare any objects here...
   private final MotorIO io;
+  private final MotorIOInputsAutoLogged inputs;
 
   /** Creates a new Motor. Instansiate all objects in this method */
-  public Motor(MotorIO io) {}
+  public Motor(MotorIO io) {
+    this.io = io;
+    inputs = new MotorIOInputsAutoLogged();
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    Logger.processInputs("Motor",inputs);
   }
 
   // Define all methods needed for your Motor below...
-
+public void SetVolts (double volts){
+  io.SetVolts(volts);
+}
+public void SetSpeed (double percent){
+  io.SetSpeed(percent);
+}
 }

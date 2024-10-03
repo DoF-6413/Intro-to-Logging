@@ -14,6 +14,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.subsystems.motor.Motor;
+import frc.robot.subsystems.motor.MotorIO;
+import frc.robot.subsystems.motor.MotorIOSim;
+import frc.robot.subsystems.motor.MotorIOSparkMax;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -23,22 +29,27 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // Declare subsystems below...
-
+private final Motor m_MotorSubsystem;
+private final CommandXboxController m_Controller;
   /** The container for the robot. Contains subsystems, IO devices, and commands. */
   public RobotContainer() {
+    m_Controller = new CommandXboxController(0);
     switch (Constants.RobotStateConstants.getMode()) {
       case REAL:
         // Instansiate Motor using the "real" IO file
+        m_MotorSubsystem = new Motor(new MotorIOSparkMax());
 
         break;
 
       case SIM:
         // Instansiate Motor using the sim IO file
+        m_MotorSubsystem = new Motor(new MotorIOSim());
 
         break;
 
-      case REPLAY:
+      default:
         // Instansiate Motor using the default IO file
+        m_MotorSubsystem = new Motor (new MotorIO(){});
 
         break;
     }
@@ -51,7 +62,9 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    m_MotorSubsystem.setDefaultCommand(new InstantCommand(m_MotorSubsystem.SetSpeed(doub)));
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
