@@ -31,6 +31,7 @@ public class MotorIOSim implements MotorIO {
             motorSim.getAngularVelocityRadPerSec() * RobotStateConstants.LOOP_PERIODIC_SEC);
     inputs.positionRadians +=
         motorSim.getAngularVelocityRadPerSec() * RobotStateConstants.LOOP_PERIODIC_SEC;
+    motorSim.update(RobotStateConstants.LOOP_PERIODIC_SEC);
   }
 
   // Define any other mehods needed to for your Motor below...

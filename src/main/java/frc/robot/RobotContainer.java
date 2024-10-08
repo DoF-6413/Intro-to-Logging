@@ -14,6 +14,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.motor.Motor;
 import frc.robot.subsystems.motor.MotorIO;
 import frc.robot.subsystems.motor.MotorIOSim;
@@ -28,6 +30,7 @@ import frc.robot.subsystems.motor.MotorIOSparkMax;
 public class RobotContainer {
   // Declare subsystems below...
   private final Motor m_motorsubsystem;
+  private final CommandXboxController controller = new CommandXboxController(0);
   /** The container for the robot. Contains subsystems, IO devices, and commands. */
   public RobotContainer() {
     switch (Constants.RobotStateConstants.getMode()) {
@@ -44,7 +47,7 @@ public class RobotContainer {
 
       default:
         // Instansiate Motor using the default IO file
-        m_motorsubsystem = new Motor(new MotorIO(){});
+        m_motorsubsystem = new Motor(new MotorIO() {});
 
         break;
     }
@@ -58,7 +61,9 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    in
+    m_motorsubsystem.setDefaultCommand(
+        new InstantCommand(
+            () -> m_motorsubsystem.setSpeed(controller.getLeftX()), m_motorsubsystem));
   }
 
   /**

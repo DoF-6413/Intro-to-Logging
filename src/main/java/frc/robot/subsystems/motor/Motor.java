@@ -5,6 +5,7 @@
 package frc.robot.subsystems.motor;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import org.littletonrobotics.junction.Logger;
 
 public class Motor extends SubsystemBase {
   // Declare any objects here...
@@ -20,6 +21,7 @@ public class Motor extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     io.updateInputs(inputs);
+    Logger.processInputs("motor", inputs);
   }
 
   // Define all methods needed for your Motor below...
