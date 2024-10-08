@@ -24,7 +24,7 @@ public interface MotorIO {
   // will be done elsewhere
   // Note: All javadoc comments made to methods here will make them visable to all within other
   // files using them.
-public default void SetVolts (double volts){}
-public default void SetSpeed (double percent){}
-}
+  public default void SetVolts(double volts) {}
 
+  public default void SetSpeed(double percent) {}
+}

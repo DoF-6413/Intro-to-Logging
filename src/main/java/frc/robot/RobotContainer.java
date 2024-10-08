@@ -13,6 +13,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -29,11 +31,11 @@ import frc.robot.subsystems.motor.MotorIOSparkMax;
  */
 public class RobotContainer {
   // Declare subsystems below...
-private final Motor m_MotorSubsystem;
-private final CommandXboxController m_Controller;
+  private final Motor m_MotorSubsystem;
+  private final CommandXboxController m_Controller = new CommandXboxController(0);
   /** The container for the robot. Contains subsystems, IO devices, and commands. */
   public RobotContainer() {
-    m_Controller = new CommandXboxController(0);
+    
     switch (Constants.RobotStateConstants.getMode()) {
       case REAL:
         // Instansiate Motor using the "real" IO file
@@ -49,7 +51,7 @@ private final CommandXboxController m_Controller;
 
       default:
         // Instansiate Motor using the default IO file
-        m_MotorSubsystem = new Motor (new MotorIO(){});
+        m_MotorSubsystem = new Motor(new MotorIO() {});
 
         break;
     }
@@ -63,7 +65,9 @@ private final CommandXboxController m_Controller;
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    m_MotorSubsystem.setDefaultCommand(new InstantCommand(m_MotorSubsystem.SetSpeed(doub)));
+    m_MotorSubsystem.setDefaultCommand(
+        new InstantCommand(
+            () -> m_MotorSubsystem.SetSpeed(m_Controller.getLeftX()), m_MotorSubsystem));
   }
 
   /**

@@ -21,14 +21,16 @@ public class Motor extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    Logger.processInputs("Motor",inputs);
+    io.updateInputs(inputs);
+    Logger.processInputs("Motor", inputs);
   }
 
   // Define all methods needed for your Motor below...
-public void SetVolts (double volts){
-  io.SetVolts(volts);
-}
-public void SetSpeed (double percent){
-  io.SetSpeed(percent);
-}
+  public void SetVolts(double volts) {
+    io.SetVolts(volts);
+  }
+
+  public void SetSpeed(double percent) {
+    io.SetSpeed(percent);
+  }
 }
