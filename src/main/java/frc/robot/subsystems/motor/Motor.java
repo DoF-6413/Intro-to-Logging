@@ -4,19 +4,37 @@
 
 package frc.robot.subsystems.motor;
 
+import org.littletonrobotics.junction.Logger;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Motor extends SubsystemBase {
-  // Declare any objects here...
-
+  private final MotorIO io;
+  private final MotorIOInputsAutoLogged inputs = new MotorIOInputsAutoLogged();
+  
+  // private double setpointRPM = 0.0;
   /** Creates a new Motor. Instansiate all objects in this method */
-  public Motor(MotorIO io) {}
+  public Motor(MotorIO io) {
+    this.io = io;
+  }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    this.updateInputs();
+    Logger.processInputs("ALGAE", inputs);
   }
 
-  // Define all methods needed for your Motor below...
+  /** Updates the set of loggable inputs for both motors */
+  public void updateInputs() {
+    io.updateInputs(inputs);
+  }
 
+  public void setSpeed(double percent) {
+    io.setSpeed(percent);
+  }
+
+  public void setVoltage(double volts) {
+    io.setVoltage(volts);
+  }
 }
