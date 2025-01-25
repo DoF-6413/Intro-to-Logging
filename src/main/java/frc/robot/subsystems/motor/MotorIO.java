@@ -25,6 +25,6 @@ public interface MotorIO {
   public default void updateInputs(MotorIOInputs inputs) {}
 
   public default void setSpeed(double percent) {}
-  
+
   public default void setVoltage(double volts) {}
 }

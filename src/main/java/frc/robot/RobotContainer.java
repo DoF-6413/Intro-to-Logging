@@ -13,7 +13,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.math.proto.Controller;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,7 +33,7 @@ public class RobotContainer {
   // Declare subsystems below...
   private final Motor m_algae;
   private final CommandXboxController controller = new CommandXboxController(0);
-  
+
   /** The container for the robot. Contains subsystems, IO devices, and commands. */
   public RobotContainer() {
     switch (Constants.RobotStateConstants.getMode()) {
@@ -64,7 +63,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     m_algae.setDefaultCommand(
-      new InstantCommand(() -> m_algae.setSpeed(controller.getLeftY()), m_algae));
+        new InstantCommand(() -> m_algae.setSpeed(controller.getLeftY()), m_algae));
   }
 
   /**

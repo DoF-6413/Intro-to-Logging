@@ -4,14 +4,13 @@
 
 package frc.robot.subsystems.motor;
 
-import org.littletonrobotics.junction.Logger;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import org.littletonrobotics.junction.Logger;
 
 public class Motor extends SubsystemBase {
   private final MotorIO io;
   private final MotorIOInputsAutoLogged inputs = new MotorIOInputsAutoLogged();
-  
+
   // private double setpointRPM = 0.0;
   /** Creates a new Motor. Instansiate all objects in this method */
   public Motor(MotorIO io) {

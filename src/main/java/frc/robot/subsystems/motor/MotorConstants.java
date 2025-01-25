@@ -6,11 +6,10 @@ package frc.robot.subsystems.motor;
 
 /** Add your docs here. */
 public class MotorConstants {
-    public static double LEFT_GEAR_RATIO = 3.0;
-    public static double RIGHT_GEAR_RATIO = 3.0;
-    public static int CURRENT_LIMIT_A = 40;
+  public static double LEFT_GEAR_RATIO = 3.0;
+  public static double RIGHT_GEAR_RATIO = 3.0;
+  public static int CURRENT_LIMIT_A = 40;
 
-    public static int LEFT_CAN_ID = 1;
-    public static int RIGHT_CAN_ID = 2;
-
+  public static int LEFT_CAN_ID = 2;
+  public static int RIGHT_CAN_ID = 3;
 }
